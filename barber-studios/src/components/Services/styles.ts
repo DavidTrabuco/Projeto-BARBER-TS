@@ -1,0 +1,16 @@
+export const ServicesStyle = {
+  section:      'bg-textured py-24 px-6',
+  inner:        'max-w-7xl mx-auto',
+  header:       'mb-12',
+  sectionLabel: 'text-xs text-amber-400 font-medium tracking-widest uppercase mb-4',
+  title:        'text-4xl md:text-5xl font-bold text-white font-display',
+  grid:         'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6',
+  card:         'bg-zinc-900 border border-zinc-800 overflow-hidden group cursor-pointer transition-all duration-300 hover:border-amber-400/60 hover:-translate-y-1',
+  cardImg:      'w-full h-52 object-cover grayscale group-hover:grayscale-0 transition-all duration-500',
+  cardBody:     'p-5',
+  cardTag:      'text-amber-400 text-xs font-medium tracking-widest uppercase mb-2',
+  cardTitle:    'text-white font-semibold text-base mb-1 font-display',
+  cardPrice:    'text-zinc-500 text-sm mb-4',
+  cardDesc:     'text-zinc-400 text-sm mb-4 leading-relaxed',
+  cardBtn:      'w-full py-2 border border-amber-400 text-amber-400 text-xs font-semibold uppercase tracking-widest hover:bg-amber-400 hover:text-zinc-950 transition-all duration-300',
+}
