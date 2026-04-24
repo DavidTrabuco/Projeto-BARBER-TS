@@ -10,6 +10,13 @@ interface FormState {
 
 const emptyForm: FormState = { name: '', phone: '', service: '', date: '', time: '' }
 
+function maskPhone(value: string): string {
+  const digits = value.replace(/\D/g, '').slice(0, 11)
+  if (digits.length <= 2) return `(${digits}`
+  if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`
+  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`
+}
+
 function validar(form: FormState): Record<string, string> {
   const erros: Record<string, string> = {}
 
@@ -23,8 +30,7 @@ function validar(form: FormState): Record<string, string> {
     erros.phone = 'WhatsApp é obrigatório.'
   } else {
     const digits = form.phone.replace(/\D/g, '')
-    if (digits.length < 10) erros.phone = 'Telefone precisa ter pelo menos 10 dígitos.'
-    else if (digits.length > 11) erros.phone = 'Telefone inválido.'
+    if (digits.length < 11) erros.phone = 'WhatsApp inválido. Ex: (11) 99999-9999'
   }
 
   if (!form.service) {
@@ -54,7 +60,8 @@ export default function useBooking(onClose: () => void) {
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     const { name, value } = e.target
-    setForm((prev) => ({ ...prev, [name]: value }))
+    const newValue = name === 'phone' ? maskPhone(value) : value
+    setForm((prev) => ({ ...prev, [name]: newValue }))
     if (erros[name]) setErros((prev) => ({ ...prev, [name]: '' }))
   }
 

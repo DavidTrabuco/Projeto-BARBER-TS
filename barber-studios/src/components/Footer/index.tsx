@@ -1,4 +1,5 @@
 import { FooterStyle } from './styles'
+import useScroll from '../../hooks/useScroll'
 
 const links = [
   { label: 'Sobre', href: '#sobre' },
@@ -9,10 +10,7 @@ const links = [
 ]
 
 export default function Footer() {
-  const handleScroll = (href: string) => {
-    const target = document.querySelector<HTMLElement>(href)
-    target?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
+  const { handleScroll } = useScroll()
 
   return (
     <footer className={FooterStyle.footer}>

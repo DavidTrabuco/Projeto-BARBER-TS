@@ -1,14 +1,12 @@
 import { HeroStyle } from './styles'
+import useScroll from '../../hooks/useScroll'
 
 interface HeroProps {
   onOpenBooking: () => void
 }
 
 export default function Hero({ onOpenBooking }: HeroProps) {
-  const handleScroll = (href: string) => {
-    const target = document.querySelector<HTMLElement>(href)
-    target?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
+  const { handleScroll } = useScroll()
 
   return (
     <section id="hero" className={HeroStyle.section}>

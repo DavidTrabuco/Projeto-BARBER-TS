@@ -1,11 +1,12 @@
 import { useState } from 'react'
+import useScroll from './useScroll'
 
 export default function useNavbar() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const { handleScroll: scrollTo } = useScroll()
 
   function handleScroll(href: string) {
-    const target = document.querySelector<HTMLElement>(href)
-    target?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    scrollTo(href)
     setMenuOpen(false)
   }
 
