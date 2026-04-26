@@ -84,6 +84,7 @@ export default function Booking({ isOpen, onClose }: BookingProps) {
               {erros.phone && <p className={BookingStyle.errorMsg}>{erros.phone}</p>}
             </div>
 
+
             <div className={BookingStyle.inputGroup}>
               <label htmlFor="service" className={BookingStyle.inputLabel}>Serviço</label>
               <select
